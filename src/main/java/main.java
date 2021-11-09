@@ -6,79 +6,36 @@ public class main {
 
 
         }
-        public static int largoArreglo() { // valida el largo de un arreglo
-
-            Scanner teclado = new Scanner(System.in);
-            int numero1 = 0;
-            do {
-                try {
-                    System.out.println("..........[Ingrese largo]..........");
-                    numero1 = teclado.nextInt();
-                    if (numero1 < 0) {
-                        System.out.println("No se admiten numeros negativos");
-                    } else if (numero1 > 10) {
-                        System.out.println("No se admiten numeros mayores a 10");
-                        numero1 = -1;
-
-                    }
-                } catch (java.util.InputMismatchException e) {
-                    System.out.println("Dato erroneo");
-                    System.out.println("Intentelo denuevo");
-                    teclado.next();
-
-                }
-
-            } while (numero1 <= 0);
-            return numero1;
-
+    public static int[] pasarFilaHaciaArreglo(int[][] matriz, int fila) {
+        int[] arreglo = new int[matriz[1].length];
+        for (int i = 0; i < arreglo.length; i++) {
+            arreglo[i] = matriz[fila][i];
         }
-    public static int validarEntrada ( ){
-        Scanner teclado = new Scanner(System.in);
-        int numero=0;
-        do {
-            try {
-                System.out.println("Escriba un elemento valido");
-                numero = teclado.nextInt();
-                if (numero < 0) {
-                    System.out.println("No se admiten numeros negativos");
-                } else if (numero > 100) {
-                    System.out.println("No se admiten numeros mayores a 100");
-                    numero = -1;
+        return arreglo;
 
-                }
-            } catch (java.util.InputMismatchException e) {
-                System.out.println("Dato erroneo");
-                System.out.println("Intentelo denuevo");
-                teclado.next();
-
-            }
-
-        } while (numero <= 0);
-        return numero;
     }
-    public static int[][] invertirHorizontalmente(int[][] matriz) {
-        int m = matriz.length;
-        int[][] invertida = new int[m][m];
-
-        for (int i = 0; i < m; ++i) {
-            for (int j = 0; j < m; ++j) {
-                invertida[i][j] = matriz[m - i - 1][j];
+    public static int[] ordenarArregloMenorMayor(int[] numeros) {
+        int[] ultima;
+        int aux;
+        for (int i = 0; i < numeros.length - 1; i++) {
+            for (int j = 0; j < numeros.length - i - 1; j++) {
+                if (numeros[j + 1] < numeros[j]) {
+                    aux = numeros[j + 1];
+                    numeros[j + 1] = numeros[j];
+                    numeros[j] = aux;
+                    // System.out.println("aux" + aux);
+                }
             }
         }
+        ultima = numeros;
+        System.out.println("ORDENADOS MENOR-MAYOR");
+        for (int i = 0; i < numeros.length; i++) {
 
-        return invertida;
-    }
+            System.out.println("Posicion [" + (i + 1) + "] =" + ultima[i]);
 
-    public static int[][] invertirVerticalmente(int[][] matriz) {
-        int m = matriz.length;
-
-        int[][] invertida = new int[m][m];
-        for (int i = 0; i < m; ++i) {
-            for (int j = 0; j < m; ++j) {
-                invertida[i][j] = matriz[i][matriz.length - 1 - j];
-            }
         }
-        return invertida;
+        return ultima;
+
     }
 
     }
