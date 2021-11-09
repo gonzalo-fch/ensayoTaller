@@ -56,5 +56,29 @@ public class main {
         } while (numero <= 0);
         return numero;
     }
+    public static int[][] invertirHorizontalmente(int[][] matriz) {
+        int m = matriz.length;
+        int[][] invertida = new int[m][m];
+
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < m; ++j) {
+                invertida[i][j] = matriz[m - i - 1][j];
+            }
+        }
+
+        return invertida;
+    }
+
+    public static int[][] invertirVerticalmente(int[][] matriz) {
+        int m = matriz.length;
+
+        int[][] invertida = new int[m][m];
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < m; ++j) {
+                invertida[i][j] = matriz[i][matriz.length - 1 - j];
+            }
+        }
+        return invertida;
+    }
 
     }
