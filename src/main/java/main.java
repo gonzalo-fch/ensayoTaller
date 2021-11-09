@@ -1,3 +1,7 @@
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class main {
@@ -37,5 +41,26 @@ public class main {
         return ultima;
 
     }
+    public String obtenerContenido() {
+
+        Path archivo = Paths.get(obtenerRUTA());
+        String texto = "";
+        try {
+            texto = new String(Files.readAllBytes(archivo));
+
+        } catch (IOException e) {
+            System.out.println("El archivo no pudo ser leido");
+
+        }
+        return texto ;
+
 
     }
+    public static String obtenerRUTA(){
+        Scanner teclado = new Scanner(System.in);
+        System.out.println("Ingresa la ruta");
+        return teclado.next();
+    }
+
+    }
+
