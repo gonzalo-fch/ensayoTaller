@@ -1,3 +1,7 @@
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class main {
@@ -36,6 +40,31 @@ public class main {
         }
         return ultima;
 
+    }
+    public static boolean crearArchivo() {
+        boolean creacion=true;
+        Path archivo = Paths.get(obtenerRUTA());
+
+        try {
+            Files.write(archivo, obtenerTexto().getBytes());
+
+        } catch (IOException e) {
+            creacion= false;
+        }
+        return creacion;
+
+    }
+    public static String obtenerTexto(){
+        Scanner teclado = new Scanner(System.in);
+        System.out.println("ingresa un texto para almecenar en el archivo");
+        String texto = teclado.next() + teclado.nextLine();
+        return texto;
+
+    }
+    public static String obtenerRUTA(){
+        Scanner teclado = new Scanner(System.in);
+        System.out.println("Ingresa la ruta");
+        return teclado.next();
     }
 
     }
